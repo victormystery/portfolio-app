@@ -1,7 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(PortfolioApp());
 }
 
@@ -49,11 +54,11 @@ class PortfolioScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               ProjectCard(
-                title: 'Tracky',
+                title: 'Task Manager',
                 description:
                     'A task management app that allows users to create, update, and organize their tasks.',
-                technologies: ['Flutter', 'Dart', ],
-                githubLink: 'https://github.com/victormystery/Tracky',
+                technologies: ['Flutter', 'Dart', 'SQLite'],
+                githubLink: 'https://github.com/your-username/task-manager',
               ),
               // Add more ProjectCard widgets for each project in your portfolio
             ],
@@ -105,30 +110,25 @@ class ProjectCard extends StatelessWidget {
             ),
             SizedBox(height: 8.0),
             TextButton(
-              onPressed: () {
-                // Add code to open the GitHub repository link
-              },
-              child: GestureDetector(
-                onTap: () async {
-                  final Uri _url = Uri.parse(githubLink);
+              onPressed: () async {
+                final Uri _url = Uri.parse(githubLink);
 
-                  if (await launchUrl(_url)) {
-                    await launchUrl(_url,
-                        webOnlyWindowName: "My Portfolio",
-                        mode: LaunchMode.inAppWebView,
-                        webViewConfiguration: WebViewConfiguration(
-                          enableJavaScript: true,
-                        ));
-                  } else {
-                    throw Exception('Could not launch $_url');
-                  }
-                },
-                child: Text(
-                  'GitHub Repository',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 16.0,
-                  ),
+                if (await launchUrl(_url)) {
+                  await launchUrl(_url,
+                      webOnlyWindowName: "My Portfolio",
+                      mode: LaunchMode.inAppWebView,
+                      webViewConfiguration: WebViewConfiguration(
+                        enableJavaScript: true,
+                      ));
+                } else {
+                  throw Exception('Could not launch $_url');
+                }
+              },
+              child: Text(
+                'GitHub Repository',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16.0,
                 ),
               ),
             ),

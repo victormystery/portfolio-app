@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/widget/gallery.dart';
 import 'package:portfolio_app/widget/project_card.dart';
 
 import 'package:portfolio_app/widget/skills.dart';
@@ -43,7 +44,7 @@ class PortfolioScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -52,7 +53,7 @@ class PortfolioScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Victor ',
+                        'Victor Osarobo',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 28,
@@ -61,26 +62,26 @@ class PortfolioScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'About',
-                        style: smallText,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'Services',
-                        style: smallText,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'Contact',
-                        style: smallText,
-                      ),
-                    ),
+                    // Expanded(
+                    //   child: Text(
+                    //     'About',
+                    //     style: smallText,
+                    //   ),
+                    // ),
+                    // SizedBox(width: 8),
+                    // Expanded(
+                    //   child: Text(
+                    //     'Services',
+                    //     style: smallText,
+                    //   ),
+                    // ),
+                    // SizedBox(width: 8),
+                    // Expanded(
+                    //   child: Text(
+                    //     'Contact',
+                    //     style: smallText,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -143,7 +144,9 @@ class PortfolioScreen extends StatelessWidget {
                     Flexible(
                       child: CircleAvatar(
                         radius: 120,
-                        backgroundImage: AssetImage('images/victor.png'),
+                        foregroundImage: AssetImage(
+                          'images/victor.png',
+                        ),
                       ),
                     )
                   ],
@@ -171,11 +174,9 @@ class PortfolioScreen extends StatelessWidget {
                     SizedBox(height: 10),
                     SizedBox(
                       width: 756,
-                      height: 152,
+                      height: 320,
                       child: Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-                        ' Excepteur sint occaecat cupidatat non proident',
+                        'Results-driven Web developer with a keen eye for finding novel solutions. I thrive in highly collaborative situations and excel at crafting outstanding user-focused websites and mobile applications by leveraging my knowledge in HTML, CSS, Python, Django, Flutter, and mobile development. I am committed to producing flawless digital experiences that create a lasting impression, and I have a strong understanding of user experience, speed optimization, and industry best practices. Let\'s talk about how we can design web and mobile solutions that propel organizations to new heights.',
                         textAlign: TextAlign.justify,
                         style: smallText,
                       ),
@@ -241,7 +242,7 @@ class PortfolioScreen extends StatelessWidget {
                               SvgPicture.string(svgString[0]),
                               SizedBox(height: 30),
                               Text(
-                                'Software\nDevelopment',
+                                'Mobile\nDevelopment',
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 243, 222, 222),
                                   fontSize: 32,
@@ -311,7 +312,9 @@ class PortfolioScreen extends StatelessWidget {
                     githubLink: 'https://github.com/victormystery/Tracky',
                   ),
                 ],
-              )
+              ),
+              SizedBox(height: 15),
+              GallerySection(),
             ],
           ),
         ),
@@ -323,5 +326,6 @@ class PortfolioScreen extends StatelessWidget {
 downloadFile(url) {
   AnchorElement anchorElement = AnchorElement(href: url);
   anchorElement.download = "Victor CV";
+  anchorElement.type = "Document";
   anchorElement.click();
 }
